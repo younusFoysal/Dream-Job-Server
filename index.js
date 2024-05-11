@@ -32,8 +32,9 @@ async function run() {
         //await client.connect();
 
 
-        const jobCollection = client.db('jobsDB').collection('job')
+        const jobCollection = client.db('jobsDB').collection('job');
         const userCollection = client.db('jobsDB').collection('user');
+        const applyCollection = client.db('jobsDB').collection('apply');
 
 
 
@@ -127,6 +128,17 @@ async function run() {
             const result = await userCollection.insertOne(user)
             res.send(result)
         })
+
+
+        // TODO: Appliedjobs related apis
+        // posting applied job data to DB
+        app.post('/ajobs', async (req, res) => {
+            const newaJob = req.body;
+            console.log(newaJob)
+            const result = await applyCollection.insertOne(newaJob)
+            res.send(result)
+        })
+
 
 
 
