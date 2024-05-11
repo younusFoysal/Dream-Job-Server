@@ -46,6 +46,39 @@ async function run() {
             res.send(result)
         })
 
+        // sending db data in json format to show in client side
+        app.get('/job', async (req, res) => {
+            const cursor = jobCollection.find()
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
+        // getting specific category job data ----- category
+        app.get('/jobcategory/:category', async (req, res) => {
+            const category = req.params.category;
+            const query = {category}
+            const cursor = jobCollection.find(query)
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
+        // "/mylist/:email" getting specific email job data
+        app.get('/mylist/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = {email}
+            const cursor = jobCollection.find(query)
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
+        // deleting job in DB
+        app.delete('/job/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)}
+            const result = await jobCollection.deleteOne(query)
+            res.send(result)
+        })
+
 
 
 
