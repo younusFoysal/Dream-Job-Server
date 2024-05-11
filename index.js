@@ -53,6 +53,42 @@ async function run() {
             res.send(result)
         })
 
+        // finding job to update the data in db
+        app.get('/job/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)}
+            const result = await jobCollection.findOne(query)
+            res.send(result)
+        })
+
+        // updating job in DB
+        app.put('/job/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)}
+            const options = { upsert: true }
+            const updatedJob = req.body;
+            const job = {
+                $set: {
+                    jobURL: updatedJob.jobURL,
+                    title: updatedJob.title,
+                    category: updatedJob.category,
+                    salary: updatedJob.salary,
+                    details: updatedJob.details,
+                    ddate: updatedJob.ddate,
+                    appNum: updatedJob.appNum,
+                    pdate: updatedJob.pdate,
+                    visitors: updatedJob.visitors,
+                    email: updatedJob.email,
+                    name: updatedJob.name
+
+                }
+            }
+
+            const result = await jobCollection.updateOne(filter, job, options )
+            res.send(result)
+        })
+
+
         // getting specific category job data ----- category
         app.get('/jobcategory/:category', async (req, res) => {
             const category = req.params.category;
