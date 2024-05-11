@@ -130,12 +130,32 @@ async function run() {
         })
 
 
+
+
         // TODO: Appliedjobs related apis
-        // posting applied job data to DB
+
+
+        // posting applied job data to DB       puki@puki.com
         app.post('/ajobs', async (req, res) => {
             const newaJob = req.body;
             console.log(newaJob)
             const result = await applyCollection.insertOne(newaJob)
+            res.send(result)
+        })
+
+        // sending db data in json format to show in client side
+        app.get('/ajobs', async (req, res) => {
+            const cursor = applyCollection.find()
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
+        // "/mylist/:email" getting specific email job data
+        app.get('/myajobs/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = {email}
+            const cursor = applyCollection.find(query)
+            const result = await cursor.toArray();
             res.send(result)
         })
 
