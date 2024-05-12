@@ -139,8 +139,12 @@ async function run() {
         app.post('/ajobs', async (req, res) => {
             const newaJob = req.body;
             console.log(newaJob)
-            const result = await applyCollection.insertOne(newaJob)
-            res.send(result)
+            const result = await applyCollection.insertOne(newaJob);
+
+            const id = newaJob.ajid;
+            const query = { _id: new ObjectId(id)}
+            const plusApplynum = await jobCollection.updateOne( query, { $inc: { appNum: 1 }});
+            res.json({ result, plusApplynum });
         })
 
         // sending db data in json format to show in client side
