@@ -1,8 +1,6 @@
 
 <h1 align="center">Dream Job Server </h1>
 
----
-
 <p align="center">
   <img src="images/dreamJobServer.gif" alt="Hr Hub Pro Server">
 </p>
