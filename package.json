@@ -17,7 +17,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.6.1"
+    "mongodb": "^6.6.1",
+    "nodemon": "^3.1.4"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.32.1"
