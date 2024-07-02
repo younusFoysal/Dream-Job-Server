@@ -8,10 +8,11 @@
 
 Live Server: [Dream-Job-Server](https://dream-job-server-two.vercel.app/)
 
+Client Repo Link: [Dream-Job-Client-Repo](https://github.com/younusFoysal/Dream-Job-Client)
 
 ## Project Overview
-- **Concept**: Dream Job Server is designed to streamline the job application process by providing a robust backend server for job-related functionalities.
-- **Problem Solved**: It helps users manage job listings, applications, and recruitment processes efficiently, reducing the complexities of job hunting and hiring.
+- Dream Job Server is designed to streamline the job application process by providing a robust backend server for job-related functionalities.
+- It helps users manage job listings, applications, and recruitment processes efficiently, reducing the complexities of job hunting and hiring.
 
 ## Features
 
